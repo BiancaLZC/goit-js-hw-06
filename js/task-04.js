@@ -1,13 +1,23 @@
-"use strict"
-const incrementBtn = document.querySelector('button[data-action="increment"]');
-const decrementBtn = document.querySelector('button[data-action="decrement"]');
-const displayValue = document.querySelector('#value');
-let counterValue = [0];
-incrementBtn.addEventListener('click', (e) => {
-    counterValue += 1;
-    displayValue.innerText = counterValue;
+"use strict";
+
+let counterValue = 0;
+const valueSpan = document.getElementById("value");
+
+const decrementButton = document.querySelector(
+  'button[data-action="decrement"]'
+);
+const incrementButton = document.querySelector(
+  'button[data-action="increment"]'
+);
+
+decrementButton.addEventListener("click", () => {
+  counterValue -= 1;
+  updateCounter();
 });
-decrementBtn.addEventListener('click', (e) => {
-    counterValue -= 1;
-    displayValue.innerText = counterValue;
+incrementButton.addEventListener("click", () => {
+  counterValue += 1;
+  updateCounter();
 });
+function updateCounter() {
+  valueSpan.textContent = counterValue;
+}
